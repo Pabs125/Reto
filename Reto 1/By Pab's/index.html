@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Importamos el JQUERY -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <title>By Pabs</title>
+</head>
+
+<body>
+    <!-- .container.section -->
+    <div class="container section">
+        <!-- Creación navbar -->
+        <nav class="blue darken-4">
+            <div class="nav-wrapper">
+                <a href="#!" class="brand-logo">
+                    <img src="img/Grupo 1/elonsito.jpg" class="circle" width="80" height="auto" alt=""></img>
+                </a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="sass.html"><i class="material-icons">search</i></a></li>
+                    <li><a href="badges.html"><i class="material-icons">view_module</i></a></li>
+                    <li><a href="collapsible.html"><i class="material-icons">refresh</i></a></li>
+                    <li><a href="mobile.html"><i class="material-icons">more_vert</i></a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <form id="formid">
+            <!-- sección formulario -->
+            <div class="section">
+
+                <div class="row">
+                    <!-- solicitud de nombre -->
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">face</i>
+                        <input id="last_name" type="text" class="icon-prefix validate">
+                        <label for="last_name">Nombre</label>
+                    </div>
+                    <!-- lista desplegable -->
+                    <div class="input-field col s6">
+                        <select name="imgSelect" id="imgSelect" class="browser-default">
+                           <option value="" disabled selected>Seleccione una opción</option>
+                           <option value="1">Hombres mas ricos del mundo</option>
+                           <option value="2">Vengadores</option>
+                           <option value="3">Auto mas veloz</option>
+                       </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección de checkbox -->
+            <div class="section">
+                <div class="row">
+                    <div class="col s2">
+                        <label class="checkeable">
+                            <input type="checkbox" name="imagenesSeleccionadas[]" value="1" id="1">
+                            <img class="responsive-img circle" src="" alt="" name="ubi[]">
+                        </label>
+                    </div>
+                    <div class="col s2">
+                        <label class="checkeable">
+                            <input type="checkbox" name="imagenesSeleccionadas[]" value="2" id="2">
+                            <img class="responsive-img circle" src="" alt="" name="ubi[]">
+                        </label>
+                    </div>
+                    <div class="col s2">
+                        <label class="checkeable">
+                            <input type="checkbox" name="imagenesSeleccionadas[]" value="3" id="3">
+                            <img class="responsive-img circle" src="" alt="" name="ubi[]">
+                        </label>
+                    </div>
+                    <div class="col s2">
+                        <label class="checkeable">
+                            <input type="checkbox" name="imagenesSeleccionadas[]" value="4" id="4">
+                            <img class="responsive-img circle" src="" alt="" name="ubi[]">
+                        </label>
+                    </div>
+                    <div class="col s2">
+                        <label class="checkeable">
+                            <input type="checkbox" name="imagenesSeleccionadas[]" value="5" id="5">
+                            <img class="responsive-img circle" src="" alt="" name="ubi[]">
+                        </label>
+                    </div>
+                    <div class="col s2">
+                        <label class="checkeable">
+                            <input type="checkbox" name="imagenesSeleccionadas[]" value="6" id="6">
+                            <img class="responsive-img circle" src="" alt="" name="ubi[]">
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <!-- Sección botón -->
+            <div class="section">
+                <div class="row center">
+                    <button class="btn waves-effect waves-light blue darken-4" id="enviar">Aceptar
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        <!-- Sección de algoritmos de ordenamiento -->
+        <div class="section">
+            <!-- lista desplegable -->
+            <div class="row center">
+                <div class="input-field col s6">
+                    <select name="algoritmoSeleccionado" id="algoritmoSeleccionado" class="browser-default" onchange="showSelected()">
+                        <option value="" disabled selected>Seleccione una opción</option>
+                        <option value="1">Burbuja</option>
+                        <option value="2">Inserción</option>
+                        <option value="3">Selección</option>
+                    </select>
+                </div>
+                <div class="col s3">
+                    <label>
+                        <input type="checkbox" />
+                        <span>Descendente</span>
+                      </label>
+                </div>
+                <div class="col s3">
+                    <label>
+                        <input type="checkbox" />
+                        <span>Ascendente</span>
+                      </label>
+                </div>
+            </div>
+            <div class="row center">
+                <div class="col">
+                    <output id="algSelected"></output>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <script src="js/Funciones.js"></script>
+
+    <!-- Importanción del javascript del Materialize -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+</body>
+
+
+
+
+</html>
