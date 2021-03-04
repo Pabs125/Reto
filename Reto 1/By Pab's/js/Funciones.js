@@ -149,6 +149,161 @@ function selectionDown(){
 	}
 }
 
+function mergeSortUp(array,half = array.length/2){
+    if(array.length < 2){
+      return array;
+    }
+    const left = array.splice(0,half);
+    return mergerUp( mergeSortUp(left),mergeSortUp(array));
+}
+
+function mergerUp(left, right) {
+    const arr = new Array();
+    while (left.length && right.length) {
+        if (left[0] < right[0]) {
+            arr.push( left.shift());
+        } else {
+            arr.push( right.shift());
+        }
+    }
+    return [ ...arr, ...left, ...right ];
+}
+
+function mergeSortDown(array,half = array.length/2){
+    if(array.length < 2){
+      return array;
+    }
+    const left = array.splice(0,half);
+    return mergerDown(mergeSortDown(left),mergeSortDown(array));
+}
+
+function mergerDown(left, right) {
+    const arr = new Array();
+    while (left.length && right.length) {
+        if (left[ 0 ] > right[ 0 ]) {
+            arr.push( left.shift()); 
+        } else {
+            arr.push( right.shift());
+        }
+    }
+    return [ ...arr, ...left, ...right ];
+}
+
+
+function QuickSortUp(arrayOrder){
+    arrayOrder = quickSort(arrayOrder, 0, arrayOrder.length - 1);
+    function quickSort(array, left, right) {
+        let index;
+        if (array.length > 1) {
+            index = partition(array, left, right);
+            if (left < index - 1) {
+                quickSort(array, left, index - 1);
+            }
+            if (index < right) {
+                quickSort(array, index, right);
+            }
+        }
+        return array;
+    }
+    function swap(array, leftIndex, rightIndex){
+        var temp = array[leftIndex];
+        array[leftIndex] = array[rightIndex];
+        array[rightIndex] = temp;
+    }
+    function partition(array, left, right) {
+        let pivot = array[Math.floor((right + left) / 2)];
+        let i = left;
+        let j = right;
+        while (i <= j) {
+            while (array[i] < pivot) {
+                i++;
+            }
+            while (array[j] > pivot) {
+                j--;
+            }
+            if (i <= j) {
+                swap(array, i, j);
+                i++;
+                j--;
+            }
+        }
+        return i;
+    }
+    return arrayOrder;
+}
+
+function QuickSortDown(arrayOrder){
+    arrayOrder = quickSort(arrayOrder, 0, arrayOrder.length - 1);
+    function quickSort(array, left, right) {
+        let index;
+        if (array.length > 1) {
+            index = partition(array, left, right);
+            if (left < index - 1) {
+                quickSort(array, left, index - 1);
+            }
+            if (index < right) {
+                quickSort(array, index, right);
+            }
+        }
+        return array;
+    }
+    function swap(array, leftIndex, rightIndex){
+        var temp = array[leftIndex];
+        array[leftIndex] = array[rightIndex];
+        array[rightIndex] = temp;
+    }
+    function partition(array, left, right) {
+        let pivot = array[Math.floor((right + left) / 2)];
+        let i = left;
+        let j = right;
+        while (i <= j) {
+            while (array[i] > pivot) {
+                i++;
+            }
+            while (array[j] < pivot) {
+                j--;
+            }
+            if (i <= j) {
+                swap(array, i, j);
+                i++;
+                j--;
+            }
+        }
+        return i;
+    }
+    return arrayOrder;
+}
+
+function ShellSortUp(array) {
+	let n = array.length;
+	for (let gap = Math.floor(n/2); gap > 0; gap = Math.floor(gap/2))	{
+		for (let i = gap; i < n; i += 1)  {
+			let temp = array[i];
+			let j;
+			for (j = i; j >= gap && array[j-gap] > temp; j-=gap)  {
+				array[j] = array[j-gap];
+			}
+			array[j] = temp;
+		}
+	}
+	return array;
+}
+
+function ShellSortDown(array){
+    let n = array.length;
+	for (let gap = Math.floor(n/2); gap > 0; gap = Math.floor(gap/2))	{
+		for (let i = gap; i < n; i += 1)  {
+			let temp = array[i];
+			let j;
+			for (j = i; j >= gap && array[j-gap] < temp; j-=gap)  {
+				array[j] = array[j-gap];
+			}
+			array[j] = temp;
+		}
+	}
+	return array;
+}
+
 function updateData(){
     var input = document.getElementsByName('ubi[]');
     for (var i = 0; i < input.length; i++) {
@@ -194,6 +349,24 @@ function orderingProcess(alg,order){
     }else if((alg === "3") && (order == "downward")){
         selectionDown();
         alert("Se ordenará el grupo de imagenes de manera descendente mediante ordenamiento por selección");
+    }else if((alg === "4") && (order == "upward")){
+        mergeSortUp(selectionGroup);
+        alert("Se ordenará el grupo de imagenes de manera ascendente mediante ordenamiento por mergeSort");
+    }else if((alg === "4") && (order == "downward")){
+        mergeSortDown(selectionGroup);
+        alert("Se ordenará el grupo de imagenes de manera descendente mediante ordenamiento por mergeSort");
+    }else if((alg === "5") && (order == "upward")){
+        QuickSortUp(selectionGroup);
+        alert("Se ordenará el grupo de imagenes de manera ascendente mediante ordenamiento por QuickSort");
+    }else if((alg === "5") && (order == "downward")){
+        QuickSortDown(selectionGroup);
+        alert("Se ordenará el grupo de imagenes de manera descendente mediante ordenamiento por QuickSort");
+    }else if((alg === "6") && (order == "upward")){
+        ShellSortUp(selectionGroup);
+        alert("Se ordenará el grupo de imagenes de manera ascendente mediante ordenamiento por ShellSort");
+    }else if((alg === "6") && (order == "downward")){
+        ShellSortDown(selectionGroup);
+        alert("Se ordenará el grupo de imagenes de manera descendente mediante ordenamiento por ShellSort");
     }
     updateData();
 }
